@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="TetrisManager.js"></script>
-    <script src="ConnectionManager.js"></script>
-    <script src="Arena.js"></script>
-    <script src="Player.js"></script>
-    <script src="Tetris.js"></script>
+    <script src="client/TetrisManager.js"></script>
+    <script src="client/ConnectionManager.js"></script>
+    <script src="client/Events.js"></script>
+    <script src="client/Arena.js"></script>
+    <script src="client/Player.js"></script>
+    <script src="client/Tetris.js"></script>
     
     <style>
         body {
@@ -21,14 +22,18 @@
         }
 
         canvas {
-            border: solid 2px white;
-            height: 15vh;
+            border: solid 2px #707070;
+            height: 45vh;
         }
 
 
         .player {
             flex: 1 1 auto;
             margin-left: 3vh;
+        }
+
+        .player.local canvas {
+            border-color: #fff;
         }
 
 
@@ -46,6 +51,6 @@
 
 
 
-    <script src="main.js"></script>
+    <script src="client/main.js"></script>
 </body>
 </html>

@@ -1,8 +1,9 @@
 const tetrisManager = new TetrisManager(document);
-const a = tetrisManager.createPlayer();
-//const b = tetrisManager.createPlayer();
+const localTetris = tetrisManager.createPlayer();
+localTetris.el.classList.add('local');
+localTetris.run();
 
-const connectionManager = new ConnectionManager();
+const connectionManager = new ConnectionManager(tetrisManager);
 connectionManager.connect('ws://localhost:9000');
 
 
@@ -36,7 +37,7 @@ const keyListener = (event) => {
     [
         ['q', 'w', 'a', 's','d'],['i','o','j','k','l']
     ].forEach((key, index) => {
-        const {player} = a;
+        const {player} = localTetris;
         if(event.type === 'keydown'){
             if(event.key === key[0]){
                 player.rotate(-1);

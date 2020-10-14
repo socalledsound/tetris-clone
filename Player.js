@@ -15,10 +15,6 @@ class Player {
         this.reset();
     }
 
-
-
-
-
     createPiece(type){
         if(type === 'T'){
             return [
@@ -96,7 +92,7 @@ class Player {
         if(this.arena.collide(this)){
             this.arena.clear();
             this.score = 0;
-            this.updateScore();
+            this.tetris.updateScore();
         }
     
     }

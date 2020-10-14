@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="TetrisManager.js"></script>
+    <script src="ConnectionManager.js"></script>
     <script src="Arena.js"></script>
     <script src="Player.js"></script>
     <script src="Tetris.js"></script>
@@ -14,21 +16,19 @@
             font-family: sans-serif;
             font-size: 2em;
             text-align: center;
-
+            display: flex;
+            flex-wrap: wrap;
         }
 
         canvas {
             border: solid 2px white;
-            height: 90vh;
+            height: 15vh;
         }
 
-        .flex-container {
-            display : flex;
-          
-        }
 
         .player {
             flex: 1 1 auto;
+            margin-left: 3vh;
         }
 
 
@@ -36,17 +36,14 @@
     <title>Tetris</title>
 </head>
 <body>
-    <div class="flex-container">
+    <template id="player-template">
+   
         <div class="player">
             <div class="score"></div>
             <canvas class='tetris' width='240' height='400'></canvas>
         </div>
-    
-        <div class="player">
-            <div class="score"></div>
-            <canvas class='tetris' width='240' height='400'></canvas>
-        </div>
-    </div>
+    </template>
+
 
 
     <script src="main.js"></script>

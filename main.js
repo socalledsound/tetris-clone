@@ -1,47 +1,42 @@
+const tetrisManager = new TetrisManager(document);
+const a = tetrisManager.createPlayer();
+//const b = tetrisManager.createPlayer();
 
-const tetri = [];
-const playerElements = document.querySelectorAll('.player');
-[...playerElements].forEach( (el, i) => {
-    const canvas = el.querySelector('canvas');
-    tetri[i] = new Tetris(el);
-})
-
+const connectionManager = new ConnectionManager();
+connectionManager.connect('ws://localhost:9000');
 
 
-// const matrix = [
-//     [0,0,0],
-//     [1,1,1],
-//     [0,1,0],
-// ];
+// setTimeout(removePlayer, 3000);
 
-
-
-
-
-
-
-
-
-
-
-// const player = {
-//     pos: {x: 0, y: 0},
-//     matrix: null, 
-//     score: 0,
+// for(let i = 0; i< 30; i++){
+//     tetrisManager.createPlayer();
 // }
 
 
+// function removePlayer(){
+//     tetrisManager.removePlayer(b);
+// }
+// tetrisManager.createPlayer();
+// tetrisManager.createPlayer();
+// tetrisManager.createPlayer();
+// tetrisManager.createPlayer();
+// tetrisManager.createPlayer();
+// tetrisManager.createPlayer();
+// tetrisManager.createPlayer();
 
 
-
-// console.log(arena);
-// console.table(arena);
+// const tetri = [];
+// const playerElements = document.querySelectorAll('.player');
+// [...playerElements].forEach( (el, i) => {
+//     const canvas = el.querySelector('canvas');
+//     tetri[i] = new Tetris(el);
+// })
 
 const keyListener = (event) => {
     [
         ['q', 'w', 'a', 's','d'],['i','o','j','k','l']
     ].forEach((key, index) => {
-        const {player} = tetri[index];
+        const {player} = a;
         if(event.type === 'keydown'){
             if(event.key === key[0]){
                 player.rotate(-1);

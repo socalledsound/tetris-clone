@@ -1,5 +1,6 @@
 class Tetris {
     constructor(el){
+        this.el = el;
         this.canvas = el.querySelector('canvas');
         this.context = this.canvas.getContext('2d');
         this.scoreDiv = el.querySelector('.score');

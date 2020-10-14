@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="Arena.js"></script>
+    <script src="Player.js"></script>
+    <script src="Tetris.js"></script>
+    
     <style>
         body {
             background: #202028;
@@ -15,15 +18,37 @@
         }
 
         canvas {
-            border: solid 2em white;
+            border: solid 2px white;
             height: 90vh;
         }
+
+        .flex-container {
+            display : flex;
+          
+        }
+
+        .player {
+            flex: 1 1 auto;
+        }
+
+
     </style>
     <title>Tetris</title>
 </head>
 <body>
-    <div id="score"></div>
-    <canvas id='tetris' width='240' height='400'></canvas>
-    <script src="tetris.js"></script>
+    <div class="flex-container">
+        <div class="player">
+            <div class="score"></div>
+            <canvas class='tetris' width='240' height='400'></canvas>
+        </div>
+    
+        <div class="player">
+            <div class="score"></div>
+            <canvas class='tetris' width='240' height='400'></canvas>
+        </div>
+    </div>
+
+
+    <script src="main.js"></script>
 </body>
 </html>

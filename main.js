@@ -1,17 +1,22 @@
+const path = require('path');
+const http = require('http');
 const express = require('express');
 const WebSocketServer = require('ws').Server;
 const Session = require('./server/Session');
 const Client = require('./server/Client');
 
-
+const publicPath = path.join(__dirname, 'client');
 const PORT = process.env.PORT || 5000;
-const INDEX = '/index.html';
+// const INDEX = '/index.html';
 
-const server = express()
-  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
-  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+//   .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
 
-  const wss = new WebSocketServer({server});
+const app = express();
+app.use(express.static(publicPath));
+app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+// let server = http.createServer(app);
+let server = app;
+const wss = new WebSocketServer({server});
 
 const sessions = new Map;
 

@@ -14,11 +14,11 @@ const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(express.static(publicPath));
-app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-let server = http.createServer(app);
-// let server = app;
-console.log(server);
-const wss = new Server({ server });
+// app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+// let server = http.createServer(app);
+ let server = app.listen(PORT, () => console.log(`Listening on ${PORT}`));
+// console.log(server);
+const wss = new Server({ server});
 
 const sessions = new Map;
 

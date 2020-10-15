@@ -5,9 +5,10 @@ localTetris.run();
 
 const connectionManager = new ConnectionManager(tetrisManager);
 
-var HOST = location.origin.replace(/^http/, 'ws')
+let HOST = location.origin.replace(/^http/, 'ws')
+console.log(HOST);
 connectionManager.connect(HOST);
-// connectionManager.connect('ws://localhost:5000');
+// connectionManager.connect('ws://localhost:9000');
 
 
 // setTimeout(removePlayer, 3000);

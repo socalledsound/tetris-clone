@@ -16,6 +16,7 @@ app.use(express.static(publicPath));
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
 // let server = http.createServer(app);
 let server = app;
+console.log(server);
 const wss = new WebSocketServer({server});
 
 const sessions = new Map;

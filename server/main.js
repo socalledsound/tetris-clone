@@ -1,7 +1,17 @@
+const express = require('express');
 const WebSocketServer = require('ws').Server;
 const Session = require('./Session');
 const Client = require('./Client');
-const server = new WebSocketServer({ port: 9000});
+
+
+const PORT = process.env.PORT || 3000;
+const INDEX = '/index.html';
+
+const server = express()
+  .use((req, res) => res.sendFile(INDEX, { root: __dirname }))
+  .listen(PORT, () => console.log(`Listening on ${PORT}`));
+
+  const wss = new WebSocketServer(server);
 
 const sessions = new Map;
 
@@ -49,7 +59,7 @@ function getSession(id){
     return sessions.get(id);
 }
 
-server.on('connection', connection => {
+wss.on('connection', connection => {
     
     console.log('connection established');
     const client = createClient(connection);

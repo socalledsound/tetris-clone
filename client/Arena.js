@@ -5,11 +5,13 @@ class Arena {
             matrix.push(new Array(w).fill(0));
         }
         this.matrix = matrix;
+        this.events = new Events();
     }
 
 
     clear(){
         this.matrix.forEach(row => row.fill(0));
+        this.events.emit('matrix', this.matrix);
     }
 
 
@@ -37,6 +39,7 @@ class Arena {
                 }
             })
         })
+        this.events.emit('matrix', this.matrix);
     }
     
 
@@ -54,6 +57,8 @@ class Arena {
             rowCount *= 2;
             y++
         }
+        this.events.emit('matrix', this.matrix);
+        return player.score
     }
 
 }

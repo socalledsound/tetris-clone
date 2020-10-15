@@ -34,7 +34,12 @@ function broadcastSession(session){
             type: 'session-broadcast',
             peers: {
                 you: client.id,
-                clients: clients.map(client => client.id),
+                clients: clients.map(client => {
+                    return { 
+                            id: client.id, 
+                            state: client.state, 
+                        }
+                }),
             }
         })
     })
@@ -50,23 +55,29 @@ server.on('connection', connection => {
     const client = createClient(connection);
 
     connection.on('message', msg => {
-
+        console.log(msg, 'in server main');
         const data = JSON.parse(msg);
         
         if(data.type === 'create-session'){
             const id = createId();
             const session = createSession();
             session.join(client);
+            client.state = data.state;
             client.send({
                 type: 'session-created',
-                id: session.id
+                id: session.id,
             });
         } else if(data.type === 'join-session'){
             const session = getSession(data.id) || createSession(data.id);
             session.join(client);
+            client.state = data.state;
             broadcastSession(session);
+        } else if(data.type === 'state-update'){
+            const [prop, value] = data.state;
+            client.state[data.fragment][prop] = value;
+            client.broadcast(data);
         }
-        console.log('sessions:', sessions);
+       
     })
 
     connection.on('close', () => {

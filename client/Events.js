@@ -2,6 +2,7 @@ class Events {
     constructor(){
         this._listeners = new Set;
     }
+    
     listen(name, callback){
         this._listeners.add({
             name, callback,

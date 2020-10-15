@@ -10,9 +10,11 @@ class Tetris {
         this.player = new Player(this);
 
       // update();
-      this.player.events.listen('score', score => {
+        this.player.events.listen('score', score => {
             this.updateScore(score);
-      })
+        });
+
+ 
       this.updateScore(0);
 
 
@@ -74,6 +76,25 @@ run(){
     this._update();
 }
 
+serialize(){
+    return {
+        arena: {
+            matrix: this.arena.matrix,
+        },
+        player: {
+            matrix: this.player.matrix,
+            pos: this.player.pos,
+            score: this.player.score,
+        }
+    }
+}
+
+unserialize(state){
+    this.arena = Object.assign(state.arena);
+    this.player = Object.assign(state.player);
+    this.updateScore(this.player.score);
+    this.draw();
+}
 
 updateScore(){
     this.scoreDiv.innerText = this.player.score;

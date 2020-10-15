@@ -1,7 +1,8 @@
 const path = require('path');
 const http = require('http');
 const express = require('express');
-const WebSocketServer = require('ws').Server;
+// const WebSocketServer = require('ws').Server;
+const { Server } = require('ws');
 const Session = require('./server/Session');
 const Client = require('./server/Client');
 
@@ -14,10 +15,10 @@ const PORT = process.env.PORT || 5000;
 const app = express();
 app.use(express.static(publicPath));
 app.listen(PORT, () => console.log(`Listening on ${PORT}`));
-// let server = http.createServer(app);
-let server = app;
+let server = http.createServer(app);
+// let server = app;
 console.log(server);
-const wss = new WebSocketServer({port : 9000});
+const wss = new Server({ server });
 
 const sessions = new Map;
 

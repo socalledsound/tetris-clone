@@ -1,0 +1,27 @@
+{
+  "name": "tetris",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js" 
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/socalledsound/tetris-clone.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/socalledsound/tetris-clone/issues"
+  },
+  "homepage": "https://github.com/socalledsound/tetris-clone#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "ws": "^7.3.1"
+  },
+  "engines": {
+    "node": "14.x"
+  }
+}
